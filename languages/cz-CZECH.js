@@ -7,48 +7,48 @@ module.exports = class extends Language {
 		super(...args);
 
 		this.language = {
-			WARNINGS: 'Warnings',
-			AFK_HELP_DESCRIPTION: 'Enable/Disable or set a AFK message for yourself.',
+			WARNINGS: 'Upozornění',
+			AFK_HELP_DESCRIPTION: 'Povolí/Zakáže nebo nastaví tvou AFK zprávu.',
 			AFK_HELP_EXTENDED: prefix =>
 				[
-					`**${prefix}afk** will enable or disable your AFK message`,
-					`**${prefix}afk your afk message here** will set your new AFK message to be sent.`,
+					`**${prefix}afk** povolí nebo zakáže tvou AFK zprávu`,
+					`**${prefix}afk tvá afk zpráva** upraví znění tvé AFK zprávy.`,
 					'',
-					'Advanced: You can also set your afk message with a custom made embed!'
+					'Vylepšení: Na úpravu zprávy lze použít také embed!'
 				].join('\n'),
-			AFK_MESSAGE_UPDATED: 'You have successfully updated your AFK message.',
-			AFK_STATUS_TOGGLED: status => `You have successfully **${status ? 'ENABLED' : 'DISABLED'}** your AFK message.`,
-			ANNOUNCE_HELP_DESCRIPTION: 'Send an announcement to roles without having to make them mentionable to everyone on your server.',
-			ANNOUNCE_CONTENT_REQUEST: 'Please type the message you would like to send. **Hint**: You can also send an embeded message, through an embed code.',
-			ANNOUNCE_RESPONSE_AUTHOR_TEXT: memberName => `Announcement By: ${memberName}`,
-			ANNOUNCE_RESPONSE_FAILED: 'I was unable to send a message to the channel you provided. Please check the permissions to make sure I have all the necessary permissions.',
-			ANNOUNCE_RESPONSE_SUCCESS: 'The announcement was successfully sent.',
+			AFK_MESSAGE_UPDATED: 'AFK zpráva byla zaktualizována.',
+			AFK_STATUS_TOGGLED: status => `AFK zpráva byla **${status ? 'POVOLENA' : 'ZAKÁZÁNA'}**.`,
+			ANNOUNCE_HELP_DESCRIPTION: 'Pošle oznámení rolím, které vybereš, aniž by upozornilo všechny na tvém serveru.',
+			ANNOUNCE_CONTENT_REQUEST: 'Napiš prosím zprávu, kterou bys rád poslal. **Tip**: Můžeš také poslat embed zprávu, stačí pro ni použít kód.',
+			ANNOUNCE_RESPONSE_AUTHOR_TEXT: memberName => `Oznámení od: ${memberName}`,
+			ANNOUNCE_RESPONSE_FAILED: 'Nemohl jsem poslat zprávu do kanálu, který jsi zadal. Zkontroluj prosím oprávnění a ujisti se, že mám všechny potřebné.',
+			ANNOUNCE_RESPONSE_SUCCESS: 'Oznámení bylo odesláno.',
 			COMMANDS_SERVER: {
-				title: guildName => `Server Stats For « ${guildName} »`,
-				statsName: 'Server Specific',
+				title: guildName => `Serveroé statistiky pro « ${guildName} »`,
+				statsName: 'Podrobnosti serveru',
 				statsValue: (createdAt, owner, channels, roles, members, bots) =>
-					[`Created [**${createdAt}**]`, `👑 [**${owner}**]`, `Channels [**${channels}**]`, `Roles [**${roles}**]`, `👥 [**${members}**]`, `🤖 [**${bots}**]`].join('\n'),
-				settingsName: 'G4M3R Specific Settings',
+					[`Vytvořeno [**${createdAt}**]`, `👑 [**${owner}**]`, `Kanály [**${channels}**]`, `Role [**${roles}**]`, `👥 [**${members}**]`, `🤖 [**${bots}**]`].join('\n'),
+				settingsName: 'Nastavení G4M3Ra',
 				settingsValue: settings =>
 					[
-						`Language: ${settings.language}`,
-						`Moderator Roles: ${settings.settings.moderation.modRoles.map(roleID => `<@&${roleID}>`).join(' ')}`,
-						`Admin Users: ${settings.settings.admins.map(userID => `<@${userID}>`).join(' ')}`,
-						`AutoAssignRole: ${settings.settings.autoAssignRoles.mainRole ? `<@&${settings.settings.autoAssignRoles.mainRole}>` : ''}`,
-						`Self Assignable Roles: ${settings.saRoles.length ? settings.saRoles.map(roleID => `<@&${roleID}>`).join(' ') : 'None'}`,
-						`Mod. Assignable Roles: ${settings.assignRoles.length ? settings.assignRoles.map(roleID => `<@&${roleID}>`).join(' ') : 'None'}`,
-						`Verify Role: ${settings.settings.verify.role ? `<@&${settings.settings.verify.role}>` : 'None'}`,
-						`Mail Category: ${settings.settings.mail.mailCategory ? settings.settings.mail.mailCategory : 'None'}`,
+						`Jazyk: ${settings.language}`,
+						`Role moderátorů: ${settings.settings.moderation.modRoles.map(roleID => `<@&${roleID}>`).join(' ')}`,
+						`Administrátoři: ${settings.settings.admins.map(userID => `<@${userID}>`).join(' ')}`,
+						`Auto. přidělené role: ${settings.settings.autoAssignRoles.mainRole ? `<@&${settings.settings.autoAssignRoles.mainRole}>` : ''}`,
+						`Samostatně přid. role: ${settings.saRoles.length ? settings.saRoles.map(roleID => `<@&${roleID}>`).join(' ') : 'Žádné'}`,
+						`Mod. Assignable Roles: ${settings.assignRoles.length ? settings.assignRoles.map(roleID => `<@&${roleID}>`).join(' ') : 'Žádné'}`,
+						`Verify Role: ${settings.settings.verify.role ? `<@&${settings.settings.verify.role}>` : 'Žádné'}`,
+						`Mail Category: ${settings.settings.mail.mailCategory ? settings.settings.mail.mailCategory : 'Žádná'}`,
 						`Verify Category: ${settings.settings.verify.category}`,
 						`Open Verification Channels: ${settings.welcomeChannels.length}`,
 						// `Verification Main Channel: ${settings.channels.verifyMainChannelID}`,
 						`Send AFK Responses: ${settings.settings.allowAfkResponses}`,
-						`Feedback Feature: **Idea:** ${settings.settings.feedback.idea.status} | **Issues**: ${settings.settings.feedback.bug.status}`
+						`Funkce zpětné vazby: **Nápady:** ${settings.settings.feedback.idea.status} | **Potíže**: ${settings.settings.feedback.bug.status}`
 					].join('\n')
 			},
-			BAD_EMBED: 'This was not a **valid embed object**. Best is to use the embed builder <https://embedbuilder.nadekobot.me/>!',
+			BAD_EMBED: 'Toto není **platný embed objekt**. Nejlepší bude použít embed editor <https://embedbuilder.nadekobot.me/>!',
 			CS: 'CS',
-			DAYS: 'Days',
+			DAYS: 'Dnů',
 			DEFEAT: 'Defeat',
 			DURATION: 'Duration',
 			EVENTS_ADD_ROLE_QUESTION: 'Please provide the @roles, role ids or the role names you would like to use. All members with this role will be added to the event.',
